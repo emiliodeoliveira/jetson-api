@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,10 +8,7 @@
 
   <title>Jetson API</title>
 </head>
-
 <body>
-
-
   <div class="container">
     <div class="header clearfix">
       <nav>
@@ -35,11 +31,8 @@
     <div class="well">
       <div id="usuario"></div>
     </div>
-
     <div id="paginas"></div>
-
   </div>
-
 </body>
 <script>
   window.fbAsyncInit = function () {
@@ -49,7 +42,6 @@
       xfbml: true,
       version: 'v3.2'
     });
-
 
     FB.getLoginStatus(function (response) {
       statusChangeCallback(response);
@@ -72,7 +64,7 @@
       document.getElementById('sair').style.display = "";
       document.getElementById('usuario').style.display = "";
     } else {
-      console.log("NÃ£o Autorizado");
+      console.log("Não Autorizado");
       document.getElementById('sair').style.display = "none";
     }
   }
@@ -82,7 +74,7 @@
     });
   }
   function requestAPI() {
-    FB.api('me?fields=name,email,birthday,likes.limit(100){link,name,picture,fan_count},link', function (response) {
+    FB.api('me?fields=name,email,birthday,likes.limit(200){link,name,picture,fan_count},link', function (response) {
       console.log(response);
       perfil(response);
       paginas(response);
@@ -90,10 +82,10 @@
   }
   function perfil(usuario) {
     var perfil = `
-		<h4><strong>Nome</strong>:${usuario.name}</h4>
-		<h4><strong>id</strong>:${usuario.id}</h4>
-    <h4><strong>E-mail</strong>:${usuario.email}</h4>
-    <h4><strong>Nascimento</strong>:${usuario.birthday}</h4>
+		<h4><strong>Nome: </strong>:${usuario.name}</h4>
+		<h4><strong>ID: </strong>:${usuario.id}</h4>
+    <h4><strong>E-mail: </strong>:${usuario.email}</h4>
+    <h4><strong>Nascimento: </strong>:${usuario.birthday}</h4>
 		<h4>Acessar Perfil: <a href="${usuario.link}" target="_blank">Clique Aqui</a></h4>
 	`;
     document.getElementById('usuario').innerHTML = perfil;
@@ -113,7 +105,7 @@
 				  <div class="media-body">
 				    <h4 class="media-heading">${pagina.likes.data[i].name}</h4>
 				    <p><strong><span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span> Curtidas:</strong> <span class="badge">${pagina.likes.data[i].fan_count}</span> </p>
-				    <p><a href="${pagina.likes.data[i].link}" target="_blank"> Visitar a PÃ¡gina </a></p>
+				    <p><a href="${pagina.likes.data[i].link}" target="_blank"> Visitar a Página </a></p>
 				  </div>
 				</div>
 		</div>
@@ -128,5 +120,4 @@
     });
   }
 </script>
-
 </html>
