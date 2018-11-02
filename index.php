@@ -82,10 +82,10 @@
   }
   function perfil(usuario) {
     var perfil = `
-		<h4><strong>Nome: </strong>:${usuario.name}</h4>
-		<h4><strong>ID: </strong>:${usuario.id}</h4>
-    <h4><strong>E-mail: </strong>:${usuario.email}</h4>
-    <h4><strong>Nascimento: </strong>:${usuario.birthday}</h4>
+		<h4><strong>Nome: </strong>${usuario.name}</h4>
+		<h4><strong>ID: </strong>${usuario.id}</h4>
+    <h4><strong>E-mail: </strong>${usuario.email}</h4>
+    <h4><strong>Nascimento: </strong>${usuario.birthday}</h4>
 		<h4>Acessar Perfil: <a href="${usuario.link}" target="_blank">Clique Aqui</a></h4>
 	`;
     document.getElementById('usuario').innerHTML = perfil;
